@@ -62,7 +62,7 @@ public class MealActivity extends AppCompatActivity {
         btnSaveAllMeals.setOnClickListener(v -> saveAllMeals());
 
         btnViewHistory.setOnClickListener(v -> {
-            startActivity(new Intent(this, MealHistoryActivity.class));
+            startActivity(new Intent(this, SelectMemberForHistoryActivity.class));
         });
     }
 
