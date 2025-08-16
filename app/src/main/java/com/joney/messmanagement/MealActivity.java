@@ -3,6 +3,7 @@ package com.joney.messmanagement;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class MealActivity extends AppCompatActivity {
+
+    private static final String TAG = "MealActivity"; // ডিবাগিং এর জন্য
 
     private TextView tvSelectedDate;
     private Button btnChangeDate, btnSaveAllMeals, btnViewHistory;
@@ -55,12 +58,10 @@ public class MealActivity extends AppCompatActivity {
         mealAdapter = new MealAdapter(mealRecordList);
         mealRecyclerView.setAdapter(mealAdapter);
 
-        updateDateInView();
-        setupDatePicker();
-        fetchMessIdAndLoadMembers();
+        updateDateInView(); // এটি fetchMessIdAndLoadMembers() কে কল করবে
 
+        btnChangeDate.setOnClickListener(v -> showDatePicker());
         btnSaveAllMeals.setOnClickListener(v -> saveAllMeals());
-
         btnViewHistory.setOnClickListener(v -> {
             startActivity(new Intent(this, SelectMemberForHistoryActivity.class));
         });
@@ -69,26 +70,26 @@ public class MealActivity extends AppCompatActivity {
     private void updateDateInView() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM, yyyy", Locale.getDefault());
         tvSelectedDate.setText(sdf.format(selectedDate.getTime()));
+        fetchMessIdAndLoadMembers(); // তারিখ পরিবর্তন হলে ডেটা রি-লোড হবে
     }
 
-    private void setupDatePicker() {
-        btnChangeDate.setOnClickListener(v -> {
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    (view, year, month, dayOfMonth) -> {
-                        selectedDate.set(Calendar.YEAR, year);
-                        selectedDate.set(Calendar.MONTH, month);
-                        selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        updateDateInView();
-                    },
-                    selectedDate.get(Calendar.YEAR),
-                    selectedDate.get(Calendar.MONTH),
-                    selectedDate.get(Calendar.DAY_OF_MONTH));
-            datePickerDialog.show();
-        });
+    private void showDatePicker() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                (view, year, month, dayOfMonth) -> {
+                    selectedDate.set(Calendar.YEAR, year);
+                    selectedDate.set(Calendar.MONTH, month);
+                    selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    updateDateInView();
+                },
+                selectedDate.get(Calendar.YEAR),
+                selectedDate.get(Calendar.MONTH),
+                selectedDate.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
     private void fetchMessIdAndLoadMembers() {
-        String adminUid = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        if (mAuth.getCurrentUser() == null) return;
+        String adminUid = mAuth.getCurrentUser().getUid();
         db.collection("users").document(adminUid).get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
                 currentMessId = documentSnapshot.getString("messId");
@@ -103,6 +104,7 @@ public class MealActivity extends AppCompatActivity {
         db.collection("users")
                 .whereEqualTo("messId", currentMessId)
                 .whereEqualTo("role", "member")
+                .orderBy("name")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && task.getResult() != null) {
@@ -111,10 +113,34 @@ public class MealActivity extends AppCompatActivity {
                             mealRecordList.add(new MealRecord(document.getId(), document.getString("name")));
                         }
                         mealAdapter.notifyDataSetChanged();
+                        loadExistingMealsForDate();
                     } else {
                         Toast.makeText(this, "Failed to load members.", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void loadExistingMealsForDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String dateString = sdf.format(selectedDate.getTime());
+
+        for (int i = 0; i < mealRecordList.size(); i++) {
+            MealRecord record = mealRecordList.get(i);
+            String docId = dateString + "_" + record.getMemberId();
+            int finalI = i;
+
+            db.collection("meals").document(docId).get().addOnSuccessListener(doc -> {
+                if (doc.exists()) {
+                    record.setBreakfast(Objects.requireNonNull(doc.getDouble("breakfast")));
+                    record.setLunch(Objects.requireNonNull(doc.getDouble("lunch")));
+                    record.setDinner(Objects.requireNonNull(doc.getDouble("dinner")));
+                    record.setGuestBreakfast(doc.contains("guestBreakfast") ? Objects.requireNonNull(doc.getDouble("guestBreakfast")) : 0);
+                    record.setGuestLunch(doc.contains("guestLunch") ? Objects.requireNonNull(doc.getDouble("guestLunch")) : 0);
+                    record.setGuestDinner(doc.contains("guestDinner") ? Objects.requireNonNull(doc.getDouble("guestDinner")) : 0);
+                    mealAdapter.notifyItemChanged(finalI);
+                }
+            });
+        }
     }
 
     private void saveAllMeals() {
@@ -126,25 +152,32 @@ public class MealActivity extends AppCompatActivity {
         WriteBatch batch = db.batch();
         List<MealRecord> recordsToSave = mealAdapter.getMealRecords();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String dateString = sdf.format(selectedDate.getTime());
+
         for (MealRecord record : recordsToSave) {
             double totalMeal = record.getBreakfast() + record.getLunch() + record.getDinner() +
                     record.getGuestBreakfast() + record.getGuestLunch() + record.getGuestDinner();
-            if (totalMeal > 0) {
-                Map<String, Object> mealData = new HashMap<>();
-                mealData.put("messId", currentMessId);
-                mealData.put("memberId", record.getMemberId());
-                mealData.put("memberName", record.getMemberName());
-                mealData.put("date", new Timestamp(selectedDate.getTime()));
-                mealData.put("breakfast", record.getBreakfast());
-                mealData.put("lunch", record.getLunch());
-                mealData.put("dinner", record.getDinner());
-                mealData.put("guestBreakfast", record.getGuestBreakfast());
-                mealData.put("guestLunch", record.getGuestLunch());
-                mealData.put("guestDinner", record.getGuestDinner());
-                mealData.put("totalMeal", totalMeal);
 
-                batch.set(db.collection("meals").document(), mealData);
-            }
+            // একটি ইউনিক ডকুমেন্ট আইডি তৈরি করা হচ্ছে
+            String docId = dateString + "_" + record.getMemberId();
+            Log.d(TAG, "Saving meal with Document ID: " + docId); // ডিবাগিং এর জন্য লগ
+
+            Map<String, Object> mealData = new HashMap<>();
+            mealData.put("messId", currentMessId);
+            mealData.put("memberId", record.getMemberId());
+            mealData.put("memberName", record.getMemberName());
+            mealData.put("date", new Timestamp(selectedDate.getTime()));
+            mealData.put("breakfast", record.getBreakfast());
+            mealData.put("lunch", record.getLunch());
+            mealData.put("dinner", record.getDinner());
+            mealData.put("guestBreakfast", record.getGuestBreakfast());
+            mealData.put("guestLunch", record.getGuestLunch());
+            mealData.put("guestDinner", record.getGuestDinner());
+            mealData.put("totalMeal", totalMeal);
+
+            // .add() এর পরিবর্তে .set() ব্যবহার করা হচ্ছে, যা পুরনো ডেটা ওভাররাইট করবে
+            batch.set(db.collection("meals").document(docId), mealData);
         }
 
         batch.commit().addOnSuccessListener(aVoid -> {
