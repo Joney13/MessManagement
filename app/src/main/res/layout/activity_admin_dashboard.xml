@@ -32,13 +32,12 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    app:cardBackgroundColor="?attr/cardMaxElevation"
-                    android:background="@drawable/card_dark_gold_bg"
-                    app:cardCornerRadius="8dp">
+                    app:cardBackgroundColor="?attr/colorPrimary"
+                    app:cardCornerRadius="12dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -60,7 +59,7 @@
                             android:textColor="@android:color/white"
                             android:textSize="16sp"/>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
                 <GridLayout
                     android:layout_width="match_parent"
@@ -68,56 +67,93 @@
                     android:columnCount="2"
                     android:layout_marginTop="16dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp" android:layout_height="wrap_content" app:cardBackgroundColor="?attr/cardMaxElevation" android:layout_columnWeight="1" android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="8dp">
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@android:color/white">
                         <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                             <TextView android:id="@+id/tvTotalMembers" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="22sp" android:textStyle="bold" android:textColor="#1A2C50"/>
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Members" android:textSize="14sp"/>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="8dp">
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@android:color/white">
                         <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                             <TextView android:id="@+id/tvTotalDeposit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BDT 0" android:textSize="22sp" android:textStyle="bold" android:textColor="#1A2C50"/>
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Deposit" android:textSize="14sp"/>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="8dp">
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@android:color/white">
                         <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                             <TextView android:id="@+id/tvTotalCost" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BDT 0" android:textSize="22sp" android:textStyle="bold" android:textColor="#1A2C50"/>
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Cost" android:textSize="14sp"/>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="8dp">
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@android:color/white">
                         <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                             <TextView android:id="@+id/tvRemainingBalance" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BDT 0" android:textSize="22sp" android:textStyle="bold" android:textColor="#1A2C50"/>
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Remaining Balance" android:textSize="14sp"/>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="8dp">
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@android:color/white">
                         <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                             <TextView android:id="@+id/tvTotalMeals" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="22sp" android:textStyle="bold" android:textColor="#1A2C50"/>
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Meals" android:textSize="14sp"/>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="8dp">
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@android:color/white">
                         <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                             <TextView android:id="@+id/tvMealRate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BDT 0.0" android:textSize="22sp" android:textStyle="bold" android:textColor="#1A2C50"/>
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Meal Rate" android:textSize="14sp"/>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
                         android:id="@+id/cardBazarAnalysis"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
                         android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
                         app:cardElevation="4dp"
-                        app:cardCornerRadius="8dp">
+                        app:cardBackgroundColor="@android:color/white">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -138,14 +174,15 @@
                                 android:textSize="16sp"
                                 android:textStyle="bold"/>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
                         android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
                         app:cardElevation="4dp"
-                        app:cardCornerRadius="8dp">
+                        app:cardBackgroundColor="@android:color/white">
                         <LinearLayout
                             android:orientation="vertical"
                             android:padding="16dp"
@@ -166,15 +203,16 @@
                                 android:text="Avg. Daily Cost"
                                 android:textSize="14sp"/>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
                         android:id="@+id/cardMealOffRequests"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
                         android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
                         app:cardElevation="4dp"
-                        app:cardCornerRadius="8dp">
+                        app:cardBackgroundColor="@android:color/white">
                         <LinearLayout
                             android:orientation="vertical"
                             android:padding="16dp"
@@ -195,7 +233,7 @@
                                 android:textStyle="bold"
                                 android:layout_marginTop="8dp"/>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    </com.google.android.material.card.MaterialCardView>
 
                 </GridLayout>
 
@@ -291,16 +329,13 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_chat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/bottom_navigation"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_dialog_email"
-        app:tint="@android:color/white"
-        android:contentDescription="Messenger" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_dialog_email"
+            app:tint="@android:color/white"
+            android:contentDescription="Messenger" />
 
         <TextView
             android:id="@+id/tvChatBadgeAdmin"
