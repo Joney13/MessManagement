@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <!-- Date Column -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jan 15"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#2C3E50" />
+
+            <TextView
+                android:id="@+id/tvDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monday"
+                android:textSize="10sp"
+                android:textColor="#7F8C8D"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+
+        <!-- Breakfast Column -->
+        <TextView
+            android:id="@+id/tvBreakfast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1.0"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#27AE60"
+            android:gravity="center" />
+
+        <!-- Lunch Column -->
+        <TextView
+            android:id="@+id/tvLunch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1.0"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#3498DB"
+            android:gravity="center" />
+
+        <!-- Dinner Column -->
+        <TextView
+            android:id="@+id/tvDinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1.0"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#E67E22"
+            android:gravity="center" />
+
+        <!-- Guest Meals Column -->
+        <TextView
+            android:id="@+id/tvGuestMeals"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0.0"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#9B59B6"
+            android:gravity="center" />
+
+        <!-- Total Column -->
+        <TextView
+            android:id="@+id/tvTotalMeal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="3.0"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#2C3E50"
+            android:gravity="center" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

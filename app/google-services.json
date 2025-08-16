@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "717695753620",
+    "firebase_url": "https://mess-management-be1da-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "mess-management-be1da",
+    "storage_bucket": "mess-management-be1da.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717695753620:android:8bfa4f6462f24fca220381",
+        "android_client_info": {
+          "package_name": "com.joney.messmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717695753620-4qu7luac9p67rjvtjptmf4utjd1hu01d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joney.messmanagement",
+            "certificate_hash": "5f527df5b059a6f4de3bc40c14e38b0dde8b7552"
+          }
+        },
+        {
+          "client_id": "717695753620-iqlge6nd180haajjou90i67cpr60v0qh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnhjMSuUNkFojfrDDrcgEw-n7Ff9VyaUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717695753620-iqlge6nd180haajjou90i67cpr60v0qh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

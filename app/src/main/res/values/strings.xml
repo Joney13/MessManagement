@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">Mess Management</string>
+
+    <!-- Notification channel -->
+    <string name="default_notification_channel_id">mess_management_channel</string>
+    <string name="default_notification_channel_name">Mess Management Notifications</string>
+    <string name="default_notification_channel_description">Notifications for mess management activities</string>
+
+    <!-- Common strings -->
+    <string name="loading">Loading...</string>
+    <string name="error">Error occurred</string>
+    <string name="success">Success</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="update">Update</string>
+
+    <!-- Login/Register -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="logout">Logout</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard">Dashboard</string>
+    <string name="total_members">Total Members</string>
+    <string name="total_deposit">Total Deposit</string>
+    <string name="total_cost">Total Cost</string>
+    <string name="remaining_balance">Remaining Balance</string>
+    <string name="total_meals">Total Meals</string>
+    <string name="meal_rate">Meal Rate</string>
+
+    <!-- Menu -->
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="menu_not_set">Menu not set for today</string>
+
+    <!-- Notice -->
+    <string name="notice_board">Notice Board</string>
+    <string name="no_new_notices">No new notices</string>
+    <string name="add_notice">Add Notice</string>
+
+    <!-- Chat -->
+    <string name="chat">Chat</string>
+    <string name="type_message">Type a message...</string>
+    <string name="send">Send</string>
+
+    <!-- Meal -->
+    <string name="meal_history">Meal History</string>
+    <string name="meal_off">Meal Off</string>
+    <string name="meal_details">Meal Details</string>
+
+    <!-- Profile -->
+    <string name="my_profile">My Profile</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+
+    <!-- PDF -->
+    <string name="download_pdf">Download PDF</string>
+    <string name="share_report">Share Report</string>
+    <string name="pdf_generated">PDF report generated successfully</string>
+
+    <!-- Error messages -->
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_loading_data">Error loading data</string>
+    <string name="error_saving_data">Error saving data</string>
+    <string name="error_invalid_input">Please enter valid information</string>
+    <string name="error_user_not_found">User not found</string>
+    <string name="error_permission_denied">Permission denied</string>
+
+    <!-- Success messages -->
+    <string name="success_data_saved">Data saved successfully</string>
+    <string name="success_data_updated">Data updated successfully</string>
+    <string name="success_data_deleted">Data deleted successfully</string>
+
+    <!-- Validation messages -->
+    <string name="field_required">This field is required</string>
+    <string name="invalid_email">Please enter a valid email</string>
+    <string name="password_too_short">Password must be at least 6 characters</string>
+    <string name="passwords_not_match">Passwords do not match</string>
+
+    <!-- Date and time -->
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="date_format">dd/MM/yyyy</string>
+    <string name="time_format">HH:mm</string>
+
+    <!-- Currency -->
+    <string name="currency_symbol">BDT</string>
+    <string name="amount">Amount</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_members">Members</string>
+    <string name="nav_deposit">Deposit</string>
+    <string name="nav_cost">Cost</string>
+    <string name="nav_meal">Meal</string>
+
+    <!-- File provider authority -->
+    <string name="file_provider_authority">com.joney.messmanagement.fileprovider</string>
+
+</resources>
